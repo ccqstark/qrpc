@@ -19,6 +19,8 @@
         <maven.compiler.target>8</maven.compiler.target>
         <lombok.version>1.18.24</lombok.version>
         <qrpc-common.version>1.0-SNAPSHOT</qrpc-common.version>
+        <logback.version>1.2.11</logback.version>
+        <kryo.version>4.0.2</kryo.version>
     </properties>
 
     <dependencyManagement>
@@ -29,14 +31,24 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
             <!-- 公告模块 -->
             <dependency>
                 <groupId>com.ccqstark</groupId>
                 <artifactId>qrpc-common</artifactId>
                 <version>${qrpc-common.version}</version>
             </dependency>
-
+            <!-- logback日志 -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <!-- kryo序列化 -->
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>${kryo.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

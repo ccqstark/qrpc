@@ -22,13 +22,21 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
         <!-- 公告模块 -->
         <dependency>
             <groupId>com.ccqstark</groupId>
             <artifactId>qrpc-common</artifactId>
         </dependency>
-
+        <!-- logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <!-- kryo -->
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
