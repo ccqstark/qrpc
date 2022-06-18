@@ -21,6 +21,7 @@
         <qrpc-common.version>1.0-SNAPSHOT</qrpc-common.version>
         <logback.version>1.2.11</logback.version>
         <kryo.version>4.0.2</kryo.version>
+        <netty.version>4.1.42.Final</netty.version>
     </properties>
 
     <dependencyManagement>
@@ -48,6 +49,12 @@
                 <groupId>com.esotericsoftware</groupId>
                 <artifactId>kryo</artifactId>
                 <version>${kryo.version}</version>
+            </dependency>
+            <!-- netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
             </dependency>
 
         </dependencies>
