@@ -1,5 +1,6 @@
 package com.ccqstark.qrpc.core.remoting.transport;
 
+import com.ccqstark.qrpc.common.extension.SPI;
 import com.ccqstark.qrpc.core.remoting.dto.RpcRequest;
 
 /**
@@ -7,6 +8,7 @@ import com.ccqstark.qrpc.core.remoting.dto.RpcRequest;
  * @description 网络请求传输接口
  * @date 2022/6/5 17:56
  */
+@SPI
 public interface RpcRequestTransport {
 
     /**
