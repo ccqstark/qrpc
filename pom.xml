@@ -23,6 +23,7 @@
         <kryo.version>4.0.2</kryo.version>
         <netty.version>4.1.42.Final</netty.version>
         <curator-version>4.2.0</curator-version>
+        <spring.version>5.2.7.RELEASE</spring.version>
     </properties>
 
     <dependencyManagement>
@@ -67,6 +68,12 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator-version}</version>
+            </dependency>
+            <!-- spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

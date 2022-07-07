@@ -8,7 +8,7 @@ import com.ccqstark.qrpc.core.remoting.constants.RpcConstants;
 import com.ccqstark.qrpc.core.remoting.dto.RpcMessage;
 import com.ccqstark.qrpc.core.remoting.dto.RpcRequest;
 import com.ccqstark.qrpc.core.remoting.dto.RpcResponse;
-import com.ccqstark.qrpc.core.remoting.serialize.Serializer;
+import com.ccqstark.qrpc.core.serialize.Serializer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;

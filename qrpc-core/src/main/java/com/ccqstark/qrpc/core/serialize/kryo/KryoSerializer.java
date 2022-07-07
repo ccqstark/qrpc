@@ -1,9 +1,9 @@
-package com.ccqstark.qrpc.core.remoting.serialize.kryo;
+package com.ccqstark.qrpc.core.serialize.kryo;
 
 import com.ccqstark.qrpc.common.exception.SerializeException;
 import com.ccqstark.qrpc.core.remoting.dto.RpcRequest;
 import com.ccqstark.qrpc.core.remoting.dto.RpcResponse;
-import com.ccqstark.qrpc.core.remoting.serialize.Serializer;
+import com.ccqstark.qrpc.core.serialize.Serializer;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

@@ -1,4 +1,4 @@
-package com.ccqstark.qrpc.core.remoting.serialize;
+package com.ccqstark.qrpc.core.serialize;
 
 /**
  * @author ccqstark
