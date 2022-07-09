@@ -6,6 +6,7 @@ import com.ccqstark.qrpc.common.extension.ExtensionLoader;
 import com.ccqstark.qrpc.core.config.RpcServiceConfig;
 import com.ccqstark.qrpc.core.provider.ServiceProvider;
 import com.ccqstark.qrpc.core.registry.ServiceRegistry;
+import com.ccqstark.qrpc.core.remoting.transport.netty.server.NettyRpcServer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetAddress;
@@ -58,7 +59,7 @@ public class ZkServiceProviderImpl implements ServiceProvider {
         try {
             String host = InetAddress.getLocalHost().getHostAddress();
             this.addService(rpcServiceConfig);
-            serviceRegistry.registerService(rpcServiceConfig.getServiceName(), new InetSocketAddress(host, ));
+            serviceRegistry.registerService(rpcServiceConfig.getServiceName(), new InetSocketAddress(host, NettyRpcServer.PORT));
         } catch (UnknownHostException e) {
             log.error("occur exception when getHostAddress", e);
         }
