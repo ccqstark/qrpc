@@ -19,7 +19,7 @@ public interface ServiceProvider {
      * @param rpcServiceName rpc服务名称
      * @return 服务对象
      */
-    Object getServiceObject(String rpcServiceName);
+    Object getService(String rpcServiceName);
 
     /**
      * @param rpcServiceConfig rpc服务相关属性

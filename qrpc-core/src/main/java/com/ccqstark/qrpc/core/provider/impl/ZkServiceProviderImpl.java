@@ -46,7 +46,7 @@ public class ZkServiceProviderImpl implements ServiceProvider {
     }
 
     @Override
-    public Object getServiceObject(String rpcServiceName) {
+    public Object getService(String rpcServiceName) {
         Object service = serviceMap.get(rpcServiceName);
         if (null == service) {
             throw new RpcException(RpcErrorMessageEnum.SERVICE_CAN_NOT_BE_FOUND);
