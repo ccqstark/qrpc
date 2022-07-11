@@ -1,0 +1,1 @@
+kryo=com.ccqstark.qrpc.core.serialize.kryo.KryoSerializer
