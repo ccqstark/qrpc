@@ -47,5 +47,4 @@ public class ChannelProvider {
         log.info("Channel map size: [{}]", channelMap.size());
     }
 
-
 }

@@ -1,6 +1,5 @@
 package com.ccqstark.qrpc.core.provider;
 
-import com.ccqstark.qrpc.core.annotation.RpcService;
 import com.ccqstark.qrpc.core.config.RpcServiceConfig;
 
 /**
