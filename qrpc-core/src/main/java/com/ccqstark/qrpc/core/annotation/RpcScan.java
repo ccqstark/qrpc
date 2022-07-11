@@ -16,6 +16,6 @@ import java.lang.annotation.*;
 @Documented
 public @interface RpcScan {
 
-    String[] basePackages();
+    String[] basePackage();
 
 }
