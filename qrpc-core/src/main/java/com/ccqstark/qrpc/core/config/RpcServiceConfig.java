@@ -14,12 +14,12 @@ import lombok.*;
 @Builder
 @ToString
 public class RpcServiceConfig {
-    
+
     /**
      * 服务版本
      */
-    private  String version = "";
-    
+    private String version = "";
+
     /**
      * 当接口有多个实现类，按这个group来区分
      */
@@ -31,7 +31,7 @@ public class RpcServiceConfig {
     private Object service;
 
     public String getRpcServiceName() {
-        return this.getRpcServiceName() + this.getGroup() + this.getVersion();
+        return this.getServiceName() + this.getGroup() + this.getVersion();
     }
 
     public String getServiceName() {
