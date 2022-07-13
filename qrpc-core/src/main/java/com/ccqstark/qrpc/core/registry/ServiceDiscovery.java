@@ -1,5 +1,6 @@
 package com.ccqstark.qrpc.core.registry;
 
+import com.ccqstark.qrpc.common.extension.SPI;
 import com.ccqstark.qrpc.core.remoting.dto.RpcRequest;
 
 import java.net.InetSocketAddress;
@@ -9,6 +10,7 @@ import java.net.InetSocketAddress;
  * @description 服务发现
  * @date 2022/6/19 16:00
  */
+@SPI
 public interface ServiceDiscovery {
 
     /**
