@@ -1,10 +1,13 @@
 package com.ccqstark.qrpc.core.serialize;
 
+import com.ccqstark.qrpc.common.extension.SPI;
+
 /**
  * @author ccqstark
  * @description 序列化接口
  * @date 2022/6/5 16:34
  */
+@SPI
 public interface Serializer {
 
     /**
