@@ -49,7 +49,7 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcMessage> {
             out.writeByte(messageType);
             out.writeByte(rpcMessage.getCodec());
             out.writeByte(CompressTypeEnum.GZIP.getCode());
-            out.writeByte(ATOMIC_INTEGER.getAndIncrement());
+            out.writeInt(ATOMIC_INTEGER.getAndIncrement());
 
             byte[] bodyBytes = null;
             int fullLength = RpcConstants.HEAD_LENGTH;
@@ -68,6 +68,7 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcMessage> {
                         .getExtension(compressName);
                 bodyBytes = compress.compress(bodyBytes);
                 fullLength += bodyBytes.length;
+                log.info("消息总长度: [{}]", fullLength);
             }
 
             if (bodyBytes != null) {

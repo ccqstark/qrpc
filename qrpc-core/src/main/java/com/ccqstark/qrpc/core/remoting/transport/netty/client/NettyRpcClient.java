@@ -79,6 +79,7 @@ public class NettyRpcClient implements RpcRequestTransport {
                 log.info("The client has connected [{}] successful!", inetSocketAddress.toString());
                 completableFuture.complete(future.channel());
             } else {
+                log.error("当前连接失败的地址: [{}]", inetSocketAddress.toString());
                 throw new IllegalStateException();
             }
         });

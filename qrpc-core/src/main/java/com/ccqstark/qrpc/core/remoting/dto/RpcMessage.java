@@ -14,9 +14,7 @@ import java.io.Serializable;
 @Data
 @Builder
 @ToString
-public class RpcMessage implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class RpcMessage {
 
     private byte messageType;
 
@@ -24,7 +22,7 @@ public class RpcMessage implements Serializable {
 
     private byte compress;
 
-    private Integer requestId;
+    private int requestId;
 
     private Object data;
 

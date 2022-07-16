@@ -42,7 +42,7 @@ public class RpcRequestHandler {
         Object result;
         try {
             Method method = service.getClass().getMethod(rpcRequest.getMethodName(), rpcRequest.getParameterTypes());
-            result = method.invoke(service, rpcRequest.getParameterTypes());
+            result = method.invoke(service, rpcRequest.getParameters());
             log.info("service: [{}] successful invoke method: [{}]", rpcRequest.getInterfaceName(), rpcRequest.getMethodName());
         } catch (NoSuchMethodException | IllegalArgumentException | InvocationTargetException |
                  IllegalAccessException e) {
