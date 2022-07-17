@@ -1,7 +1,6 @@
 <p align="center">
   <img width="320" src="https://cdn.jsdelivr.net/gh/ccqstark/image-bed/images/202207162356036.png">
 </p>
-
 <p align="center">
   <a>
     <img src="https://img.shields.io/github/languages/code-size/ccqstark/qrpc">
@@ -9,7 +8,14 @@
   <a>
     <img src="https://img.shields.io/github/license/ccqstark/qrpc">
   </a>
+  <a>
+    <img src="https://img.shields.io/github/commit-status/ccqstark/qrpc/master/d4b1bf9bece7e6b0497509c9064336722dc36e4a">
+  </a>
+  <a>
+    <img src="https://img.shields.io/maven-central/v/io.github.ccqstark/qrpc">
+  </a>
 </p>
+
 
 ### 简介
 
@@ -25,13 +31,11 @@
 
 ```xml
 <dependency>
-		<groupId>io.github.ccqstark</groupId>
-  	<artifactId>qrpc-core</artifactId>
-  	<version>1.0.0</version>
+  <groupId>io.github.ccqstark</groupId>
+  <artifactId>qrpc-core</artifactId>
+  <version>1.0.0</version>
 </dependency>
 ```
-
-
 
 
 
@@ -45,9 +49,12 @@
 
 ### 功能计划
 
+- [x] 发布到Maven中央仓库
 - [ ] Spring Boot starter 支持
 - [ ] 注册中心 Nacos 支持
 - [ ] 多种序列化实现
 - [ ] 类似dubbo-admin的后台可视化管理系统
 - [ ] 时间轮算法实现定时任务（客户端调用超时、心跳）
+
+
 
