@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ccqstark</groupId>
+    <groupId>io.github.ccqstark</groupId>
     <artifactId>qrpc</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
@@ -18,7 +18,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <lombok.version>1.18.24</lombok.version>
-        <qrpc-common.version>1.0-SNAPSHOT</qrpc-common.version>
+        <qrpc-common.version>1.0.0</qrpc-common.version>
         <logback.version>1.2.11</logback.version>
         <kryo.version>4.0.2</kryo.version>
         <netty.version>4.1.42.Final</netty.version>
@@ -35,9 +35,9 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-            <!-- 公告模块 -->
+            <!-- 公共模块 -->
             <dependency>
-                <groupId>com.ccqstark</groupId>
+                <groupId>io.github.ccqstark</groupId>
                 <artifactId>qrpc-common</artifactId>
                 <version>${qrpc-common.version}</version>
             </dependency>

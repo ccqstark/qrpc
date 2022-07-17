@@ -1,0 +1,1 @@
+gzip=io.github.ccqstark.qrpc.core.compress.gzip.GzipCompress

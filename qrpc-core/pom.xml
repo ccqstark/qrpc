@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>qrpc</artifactId>
-        <groupId>com.ccqstark</groupId>
+        <groupId>io.github.ccqstark</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -24,7 +24,7 @@
         </dependency>
         <!-- 公共模块 -->
         <dependency>
-            <groupId>com.ccqstark</groupId>
+            <groupId>io.github.ccqstark</groupId>
             <artifactId>qrpc-common</artifactId>
         </dependency>
         <!-- logback -->

@@ -1,1 +1,0 @@
-loadBalance=com.ccqstark.qrpc.core.loadbalance.loadbalancer.ConsistentHashLoadBalance
