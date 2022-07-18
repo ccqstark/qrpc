@@ -30,10 +30,11 @@
 ### 下载
 
 ```xml
+<!-- https://mvnrepository.com/artifact/io.github.ccqstark/qrpc-core -->
 <dependency>
-  <groupId>io.github.ccqstark</groupId>
-  <artifactId>qrpc-core</artifactId>
-  <version>1.0.0</version>
+    <groupId>io.github.ccqstark</groupId>
+    <artifactId>qrpc-core</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
