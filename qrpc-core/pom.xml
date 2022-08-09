@@ -17,15 +17,15 @@
     </properties>
 
     <dependencies>
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
         <!-- 公共模块 -->
         <dependency>
             <groupId>io.github.ccqstark</groupId>
             <artifactId>qrpc-common</artifactId>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <!-- logback -->
         <dependency>
