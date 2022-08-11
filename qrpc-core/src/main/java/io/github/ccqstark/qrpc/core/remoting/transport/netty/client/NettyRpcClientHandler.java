@@ -28,6 +28,9 @@ public class NettyRpcClientHandler extends ChannelInboundHandlerAdapter {
         this.nettyRpcClient = SingletonFactory.getInstance(NettyRpcClient.class);
     }
 
+    /**
+     * 读取响应数据
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try {
@@ -39,6 +42,7 @@ public class NettyRpcClientHandler extends ChannelInboundHandlerAdapter {
                     log.info("heart [{}]", tmp.getData());
                 } else if (messageType == RpcConstants.RESPONSE_TYPE) {
                     RpcResponse<Object> rpcResponse = (RpcResponse<Object>) tmp.getData();
+                    // 将响应数据存入 CompletableFuture 中
                     unprocessedRequests.complete(rpcResponse);
                 }
             }

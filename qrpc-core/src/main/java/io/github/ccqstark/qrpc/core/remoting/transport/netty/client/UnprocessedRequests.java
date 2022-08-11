@@ -13,13 +13,18 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class UnprocessedRequests {
 
+    // 用于存储未得到响应的请求对应的future
     public static final Map<String, CompletableFuture<RpcResponse<Object>>> UNPROCESSED_RESPONSE_FUTURES = new ConcurrentHashMap<>();
 
     public void put(String requestId, CompletableFuture<RpcResponse<Object>> future) {
         UNPROCESSED_RESPONSE_FUTURES.put(requestId, future);
     }
 
+    /**
+     * 接受响应数据，放进CompletableFuture中
+     */
     public void complete(RpcResponse<Object> rpcResponse) {
+        // 从未完成的请求的中移除
         CompletableFuture<RpcResponse<Object>> future = UNPROCESSED_RESPONSE_FUTURES.remove(rpcResponse.getRequestId());
         if (null != future) {
             future.complete(rpcResponse);

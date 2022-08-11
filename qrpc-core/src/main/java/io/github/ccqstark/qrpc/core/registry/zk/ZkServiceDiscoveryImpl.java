@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @author ccqstark
  * @description zookeeper服务发现实现
- * @date 2022/6/29 23:41 
+ * @date 2022/6/29 23:41
  */
 @Slf4j
 public class ZkServiceDiscoveryImpl implements ServiceDiscovery {
@@ -42,7 +42,7 @@ public class ZkServiceDiscoveryImpl implements ServiceDiscovery {
         log.info("Successfully found the service address:[{}]", targetServiceUrl);
         String[] socketAddressArray = targetServiceUrl.split(":");
         String host = socketAddressArray[0];
-        int post = Integer.parseInt(socketAddressArray[1]);
-        return new InetSocketAddress(host, post);
+        int port = Integer.parseInt(socketAddressArray[1]);
+        return new InetSocketAddress(host, port);
     }
 }

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author ccqstark
- * @description 扫描和过滤指定的注释
+ * @description 扫描和过滤指定的注解
  * @date 2022/7/6 23:14
  */
 @Slf4j
@@ -40,9 +40,9 @@ public class CustomScannerRegistrar implements ImportBeanDefinitionRegistrar, Re
         if (rpcScanBasePackages.length == 0) {
             rpcScanBasePackages = new String[]{((StandardAnnotationMetadata) annotationMetadata).getIntrospectedClass().getPackage().getName()};
         }
-        // 扫描rpc服务的注解
+        // 扫描@RpcService
         CustomScanner rpcServiceScanner = new CustomScanner(beanDefinitionRegistry, RpcService.class);
-        // 扫描Component的注解
+        // 扫描@Component
         CustomScanner springBeanScanner = new CustomScanner(beanDefinitionRegistry, Component.class);
         if (resourceLoader != null) {
             rpcServiceScanner.setResourceLoader(resourceLoader);

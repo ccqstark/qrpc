@@ -18,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2022/6/29 22:47
  */
 public class ConsistentHashLoadBalance extends AbstractLoadBalance {
+
     /**
      * 存储所有的服务节点，key为服务名称，value为对应服务的selector
      */
@@ -44,7 +45,7 @@ public class ConsistentHashLoadBalance extends AbstractLoadBalance {
             selectors.put(rpcServerName, new ConsistentHashSelector(serviceAddresses, 160, identityHashCode));
             selector = selectors.get(rpcServerName);
         }
-        // 调用选择器获取服务实例地址
+        // 调用选择器获取服务实例地址，这里用服务名和参数生成的key，Dubbo 原实现中只与参数有关
         return selector.select(rpcServerName + Arrays.stream(rpcRequest.getParameters()));
     }
 
@@ -121,9 +122,9 @@ public class ConsistentHashLoadBalance extends AbstractLoadBalance {
          * @return 服务地址
          */
         public String selectForKey(long hashCode) {
-            // 放回大于当前hash值的第一个值
+            // 返回大于当前hash值的第一个节点
             Map.Entry<Long, String> entry = virtualInvokers.ceilingEntry(hashCode);
-            // 如果为null就放回整个map的第一个，形成回环
+            // 如果节点为null就返回整个map的第一个节点（回环）
             if (entry == null) {
                 entry = virtualInvokers.firstEntry();
             }

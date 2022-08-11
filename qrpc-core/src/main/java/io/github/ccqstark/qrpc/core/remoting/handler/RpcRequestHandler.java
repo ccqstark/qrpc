@@ -41,6 +41,7 @@ public class RpcRequestHandler {
     private Object invokeTargetMethod(RpcRequest rpcRequest, Object service) {
         Object result;
         try {
+            // 根据请求参数，用反射去调用目标方法
             Method method = service.getClass().getMethod(rpcRequest.getMethodName(), rpcRequest.getParameterTypes());
             result = method.invoke(service, rpcRequest.getParameters());
             log.info("service: [{}] successful invoke method: [{}]", rpcRequest.getInterfaceName(), rpcRequest.getMethodName());
