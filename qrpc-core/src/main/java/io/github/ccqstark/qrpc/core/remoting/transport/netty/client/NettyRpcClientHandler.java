@@ -51,10 +51,15 @@ public class NettyRpcClientHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    /**
+     * 事件触发处理
+     */
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        // 连接空闲事件触发，需要发送心跳消息
         if (evt instanceof IdleStateEvent) {
             IdleState state = ((IdleStateEvent) evt).state();
+            // 主要写空闲
             if (state == IdleState.WRITER_IDLE) {
                 log.info("write idle happen [{}]", ctx.channel().remoteAddress());
                 Channel channel = nettyRpcClient.getChannel((InetSocketAddress) ctx.channel().remoteAddress());
@@ -62,6 +67,7 @@ public class NettyRpcClientHandler extends ChannelInboundHandlerAdapter {
                 rpcMessage.setCodec(SerializationTypeEnum.KRYO.getCode());
                 rpcMessage.setCompress(CompressTypeEnum.GZIP.getCode());
                 rpcMessage.setMessageType(RpcConstants.HEARTBEAT_REQUEST_TYPE);
+                // 发送Ping消息
                 rpcMessage.setData(RpcConstants.PING);
                 channel.writeAndFlush(rpcMessage).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
             }

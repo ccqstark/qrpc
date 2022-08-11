@@ -40,6 +40,7 @@ public class NettyRpcServerHandler extends ChannelInboundHandlerAdapter {
                 RpcMessage rpcMessage = new RpcMessage();
                 rpcMessage.setCodec(SerializationTypeEnum.KRYO.getCode());
                 rpcMessage.setCompress(CompressTypeEnum.GZIP.getCode());
+                // 心跳消息，回复Pong
                 if (messageType == RpcConstants.HEARTBEAT_REQUEST_TYPE) {
                     rpcMessage.setMessageType(RpcConstants.HEARTBEAT_RESPONSE_TYPE);
                     rpcMessage.setData(RpcConstants.PONG);
@@ -70,8 +71,10 @@ public class NettyRpcServerHandler extends ChannelInboundHandlerAdapter {
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         if (evt instanceof IdleStateEvent) {
             IdleState state = ((IdleStateEvent) evt).state();
+            // 读空闲
             if (state == IdleState.READER_IDLE) {
                 log.info("idle check happen, so close the connection");
+                // 关闭连接
                 ctx.close();
             }
         } else {

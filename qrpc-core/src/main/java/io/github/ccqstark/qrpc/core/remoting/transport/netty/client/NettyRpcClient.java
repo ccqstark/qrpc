@@ -54,9 +54,12 @@ public class NettyRpcClient implements RpcRequestTransport {
                     @Override
                     protected void initChannel(SocketChannel ch) {
                         ChannelPipeline p = ch.pipeline();
+                        // 心跳机制（每5秒检查一下写事件）
                         p.addLast(new IdleStateHandler(0, 5, 0, TimeUnit.SECONDS));
+                        // 编解码
                         p.addLast(new RpcMessageEncoder());
                         p.addLast(new RpcMessageDecoder());
+                        // 客户端处理器
                         p.addLast(new NettyRpcClientHandler());
                     }
                 });

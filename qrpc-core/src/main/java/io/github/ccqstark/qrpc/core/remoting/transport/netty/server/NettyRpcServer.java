@@ -48,6 +48,7 @@ public class NettyRpcServer {
         String host = InetAddress.getLocalHost().getHostAddress();
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+        // 专门的业务线程组
         DefaultEventExecutorGroup serviceHandlerGroup = new DefaultEventExecutorGroup(
                 RuntimeUtil.cpus() * 2,
                 ThreadPoolFactoryUtil.createThreadFactory("service-handler-group", false)
@@ -67,11 +68,14 @@ public class NettyRpcServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            // 30秒之后没有收到客户端请求的话就关闭连接
+                            // 30秒内没有收到客户端请求的话就关闭连接
                             ChannelPipeline p = ch.pipeline();
+                            // 心跳机制（每30秒检查一次写事件）
                             p.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
+                            // 编解码
                             p.addLast(new RpcMessageEncoder());
                             p.addLast(new RpcMessageDecoder());
+                            // 服务端处理器
                             p.addLast(serviceHandlerGroup, new NettyRpcServerHandler());
                         }
                     });
