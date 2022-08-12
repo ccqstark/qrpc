@@ -35,7 +35,7 @@ public class ThreadPoolFactoryUtil {
 
     public static ExecutorService createCustomThreadPoolIfAbsent(CustomThreadPoolConfig customThreadPoolConfig, String threadNamePrefix, Boolean daemon) {
         ExecutorService threadPool = THREAD_POOLS.computeIfAbsent(threadNamePrefix, k -> createThreadPool(customThreadPoolConfig, threadNamePrefix, daemon));
-        // 如果 threadPool 被 shutdown 的话就重新创建一个
+        // 如果threadPool已经关闭或结束的话就重新创建一个
         if (threadPool.isShutdown() || threadPool.isTerminated()) {
             THREAD_POOLS.remove(threadNamePrefix);
             threadPool = createThreadPool(customThreadPoolConfig, threadNamePrefix, daemon);
@@ -51,12 +51,15 @@ public class ThreadPoolFactoryUtil {
         log.info("call shutDownAllThreadPool method");
         THREAD_POOLS.entrySet().parallelStream().forEach(entry -> {
             ExecutorService executorService = entry.getValue();
+            // 不再接受新的任务，但是可以继续处理阻塞队列里未完成的任务
             executorService.shutdown();
             log.info("shut down thread pool [{}] [{}]", entry.getKey(), executorService.isTerminated());
             try {
+                // 等待剩下的任务都完成后再优雅关闭（善后），超时时间为10s
                 executorService.awaitTermination(10, TimeUnit.SECONDS);
             } catch (InterruptedException e) {
                 log.error("Thread pool never terminated");
+                // 直接强制关闭，当前进行中的任务也会被终止
                 executorService.shutdownNow();
             }
         });
@@ -89,6 +92,9 @@ public class ThreadPoolFactoryUtil {
         return Executors.defaultThreadFactory();
     }
 
+    /**
+     * 打印线程池的状态（各种参数）
+     */
     public static void printThreadPoolStatus(ThreadPoolExecutor threadPool) {
         ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1, createThreadFactory("print-thread-pool-status", false));
         scheduledExecutorService.scheduleAtFixedRate(() -> {
